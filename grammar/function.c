@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int fo(void){
     return 32;
 }
