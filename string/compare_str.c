@@ -1,5 +1,7 @@
 #include <stdio.h>
+// purpose: to make a function which compares two strings
 
+//  function which return the difference of
 int compare_string( const char* str0, const char* str1){
     while(*str0 != '\0' && *str1 == *str0){
         ++str0;
@@ -10,6 +12,7 @@ int compare_string( const char* str0, const char* str1){
 
 }
 
+// main function
 int main(void){
     const char* str0 = "abcdefghijkM";
     const char* str1 = "abcdefghijkm";
