@@ -10,13 +10,12 @@ int main(void){
     // }
 
     // reads a line and return the line
-    
-    char line[LINE_LENGTH];
+    // char line[LINE_LENGTH];
 
-    while(fgets(line,LINE_LENGTH, stdin ) != NULL ){
-        //puts writes strings and return non-negative
-        printf("line: %s", line);
-    }
+    // while(fgets(line,LINE_LENGTH, stdin ) != NULL ){
+    //     //puts writes strings and return non-negative
+    //     printf("line: %s", line);
+    // }
 
     return 0;
 }
