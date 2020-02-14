@@ -3,11 +3,10 @@
 int main(void){
     FILE* stream;
     char list[LINE_LENGTH];
-
-    stream = fopen("hello.txt", 'r');
+    //read
+    stream = fopen("hello.txt", "r");
     while( fgets(list, LINE_LENGTH , stream)  ){
         printf("%s", list);
-
     }
 
 
