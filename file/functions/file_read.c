@@ -6,12 +6,12 @@ int main(void){
     FILE* stream;
     char list[LINE_LENGTH];
     //read the file
-    stream = fopen("hello1.txt", "r");
+    stream = fopen("hello.txt", "r");
     if(stream == NULL){
       perror("error while opening");
     }
     
-    if(fgets(list,LINE_LENGTH,stream) != NULL){
+    while(fgets(list,LINE_LENGTH,stream) != NULL){
       printf("%s", list);
     }
     
