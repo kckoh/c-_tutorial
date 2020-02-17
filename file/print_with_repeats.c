@@ -1,36 +1,45 @@
 #include <stdio.h> 
 #include "file.h"
-// general structure: get a character check if is equal to : save this point
+#define LENGTH (50)
+//input: abc:def:ghi output: abcdefdefghi
 void print_with_repeats(const char* file_name){
-    FILE* file_open;
-    int c;
-    int go_back;
-    int count;
-    size_t size = sizeof(int);
-    file_open = fopen(file_name, "r");
+    // prepare to read a file
+    FILE* stream;
+    int c = 0;
+    int go_back = 0;
+    int count = 0;
+    stream = fopen(file_name, "r");
 
-    if(file_open == NULL){
-        perror("src File opening failed");
+    //check error
+    if(stream == NULL){
+        perror("File opening failed");
         return;
     }
 
-    while ((c = fgetc(file_open)) != EOF) { 
-        // standard C I/O file reading loop
-        if(c == 58 ){
-            if(go_back%2 == 0){
-                fseek(file_open, count *size,SEEK_CUR);
-                count = 0;
-        
+    //loop through file and go back if :
+    while ((c = fgetc(stream)) != EOF) { 
+            if(c == 58 ){
+                go_back++;
+                if(go_back%2 == 0){
+                    count--;
+                    fseek(stream, count *sizeof(char),SEEK_CUR);
+                    count = 0;
+                    go_back = 0;
+                }
             }
-            go_back++;
-        }
-        else{
-            printf("%c",c);
+            else if(go_back>0){
+                printf("%c",c);
+                count--;
+            }
+            else{
+                printf("%c",c);
+            }
         }
 
-
-    }
-     if(fclose(file_open) == EOF ){
+    // error checking while closing file
+     if(fclose(stream) == EOF ){
             perror("error while closing file");
         }
 }
+
+
