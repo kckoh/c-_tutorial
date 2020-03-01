@@ -20,6 +20,13 @@ void show_pointer(void* x){
     show_bytes( (byte_pointer) &x, sizeof(void *));
 }
 
+void show_char_array(const char* arr, size_t len){
+     printf("Address          Words In Hexadecimal   ASCII characters\n");
+    printf("%p  ",arr);
+    show_bytes( (byte_pointer) arr, len);
+     printf("      %s\n", arr);
+}
+
 int is_little_endian(){
     int i = 1;
     byte_pointer x = (byte_pointer) &i;
